@@ -1,0 +1,5 @@
+require File.expand_path(File.dirname(__FILE__) + '/reactor/vici_event_handler' )
+require File.expand_path(File.dirname(__FILE__) + '/reactor/vici_event' )
+require File.expand_path(File.dirname(__FILE__) + '/reactor/vici_proc' )
+require File.expand_path(File.dirname(__FILE__) + '/reactor/vici_dispatcher' )
+require File.expand_path(File.dirname(__FILE__) + '/reactor/event_defs' )

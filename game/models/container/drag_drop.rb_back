@@ -1,0 +1,230 @@
+class Container < ActiveRecord::Base
+  class << self
+    def drag_drop(character, container_index, slot_index, dest_container_index, dest_slot_index)
+      container      = player_container(container_index, character.id) 
+      dest_container = player_container(dest_container_index, character.id)
+      item           = container.get_item_by_slot_index(slot_index)
+      static_item    = static_item(item.static_item_id)
+
+
+      #validate_in_trade(container, slot_index) # 判定物品是否正在交易中
+
+      # 检查，源物品是否可以放入目的背包+槽
+      puts "000"
+      raise InvalidContainerError unless can_put_item_in?(character, item, dest_container, dest_slot_index)
+      puts "000"
+
+        #      begin
+        # 如果，目的槽不为空
+        #dest_slot = container_slot(dest_container, dest_slot_index)
+        dest_item = dest_container.get_item_by_slot_index(dest_slot_index)
+        #   如果，物品static_item_id相同，并且是可堆叠的物品
+        max_stack = static_item['max_stack']
+        if dest_item and dest_item.static_item_id == item.static_item_id and max_stack > 1
+          move_stacking_item(container, item, dest_container, dest_item, max_stack)
+        else
+          #   否则，交换位置
+          #     检查，目标物品是否可以放入源背包+槽
+          #puts "111"
+          #raise InvalidContainerError unless can_put_item_in?(dest_slot.item, container, slot_index)
+          #raise InvalidContainerError unless can_put_item_in?(character, item, dest_container, dest_slot_index)
+          #puts "111"
+          #     SPECIAL
+          if dest_container_index == Vici::ContainerType::INVENTORY #and dest_slot_index == Vici::InventorySlot::MAIN_HAND
+            # 装备双手武器，替换单手武器+盾牌时，需要检查装备包是否满
+            main_hand_item = dest_container.inventory_slot(Vici::InventorySlot::MAIN_HAND)
+            off_hand_item = dest_container.inventory_slot(Vici::InventorySlot::OFF_HAND)
+            if item.is_two_hand_weapon? and off_hand_item
+              #move_item(off_hand_item, container)
+              container.add_item(off_hand_item)
+            elsif item.is_off_hand_weapon? and main_hand_item and main_hand_item.is_two_hand_weapon?
+              container.add_item(main_hand_item)
+            end
+          end
+          #     交换
+          swap_slots(container, slot_index, dest_container, dest_slot_index)
+        end
+#      rescue InvalidSlotError
+#        # 否则，移动位置
+#        #   SPECIAL
+#        if dest_container_index == Vici::ContainerType::INVENTORY
+#          static_equipment = Vici::Code.first(:EQUIPMENT, 'id', item.static_item_id)
+#          # 装备盾牌，会换下双手武器
+#          #main_hand_slot = inventory_slot(Vici::InventorySlot::MAIN_HAND, dest_container)
+#          main_hand_item = dest_container.inventory_slot(Vici::InventorySlot::MAIN_HAND)
+#          if item.is_off_hand_weapon? and main_hand_item and main_hand_item.is_two_hand_weapon?
+#            item.container_id = dest_container.id
+#            item.slot_index   = dest_slot_index
+#            item.save!
+#
+#            main_hand_item.container_id = container.id
+#            main_hand_item.slot_index   = slot_index
+#            main_hand_item.save!
+#            
+##            slot.container_id = dest_container.id
+##            slot.slot_index = dest_slot_index
+##            slot.save!
+##            main_hand_slot.container_id = container.id
+##            main_hand_slot.slot_index = slot_index
+##            main_hand_slot.save!
+##            post_account_event Vici::EventType::ITEM, [[Vici::ContainerType::INVENTORY, Vici::InventorySlot::MAIN_HAND, nil, 0]]
+##            post_account_event Vici::EventType::ITEM, [[container_index, slot_index, main_hand_slot.item.static_item_id, main_hand_slot.item.stack]]
+##            post_account_event Vici::EventType::ITEM, [[dest_container_index, dest_slot_index, slot.item.static_item_id, slot.item.stack]]
+#            #post_unit_equipment_changed
+#            return
+#          end
+#          #     装备双手武器，会换下盾牌
+#          off_hand_item = dest_container.inventory_slot(Vici::InventorySlot::OFF_HAND)
+#          if item.is_two_hand_weapon? and off_hand_item
+#            item.container_id = dest_container.id
+#            item.slot_index   = dest_slot_index
+#            item.save!
+#            
+#            off_hand_item.container_id = container.id
+#            off_hand_item.slot_index   = slot_index
+#            off_hand_item.save! 
+#
+##            slot.container_id = dest_container.id
+##            slot.slot_index = dest_slot_index
+##            slot.save!
+##            off_hand_slot.container_id = container.id
+##            off_hand_slot.slot_index = slot_index
+##            off_hand_slot.save!
+##            post_account_event Vici::EventType::ITEM, [[Vici::ContainerType::INVENTORY, Vici::InventorySlot::OFF_HAND, nil, 0]]
+##            post_account_event Vici::EventType::ITEM, [[container_index, slot_index, off_hand_slot.item.static_item_id, off_hand_slot.item.stack]]
+##            post_account_event Vici::EventType::ITEM, [[dest_container_index, dest_slot_index, slot.item.static_item_id, slot.item.stack]]
+#            #post_unit_equipment_changed
+#            return
+#          end
+#        end
+#        #   移动
+#        move_item(container, item, dest_container, dest_slot_index)
+      end
+
+      #post_unit_equipment_changed if container_index == Vici::ContainerType::INVENTORY or dest_container_index == Vici::ContainerType::INVENTORY
+    end
+
+    private
+
+      def can_put_item_in?(character, item, container, dest_slot_index)
+        static_item    = static_item(item.static_item_id)
+        static_item_id = item.static_item_id
+        puts 1
+        raise InvalidContainerError unless container.can_put?
+
+        if container.is_bag?
+          puts 2
+          raise InvalidContainerError unless Item.bag_index_for_item(static_item_id) == container.container_type
+        end
+
+        if container.is_inventory?
+          static_equipment = static_equipment(static_item_id)
+          puts 3
+          raise InvalidSlotError unless can_equip?(static_equipment["slot"], dest_slot_index)
+          puts 4
+          raise LevelTooLowError if character.level < static_item["level_required"].to_i
+          puts 5
+          Item.is_valid_profession?(character, static_item)
+        end
+        puts 6
+        raise InvalidSlotError if container.max_slot < item.slot_index + 1
+        true
+      end
+
+      def move_stacking_item(container, item, dest_container, dest_item, max_stack)
+        changes = []
+        amount = item.quantity
+        amount = (max_stack - dest_item.quantity) if (dest_item.quantity + amount) > max_stack
+        return changes if amount == 0
+        dest_item.quantity += amount
+        dest_item.save!
+        item.quantity -= amount
+
+        changes << [dest_item.container.container_type, dest_item.slot_index, dest_item.static_item_id, dest_item.quantity]
+        if item.quantity != 0
+          item.save!
+          changes << [container.container_type, item.slot_index, item.static_item_id, item.quantity]
+        else
+          item.destroy
+        end
+        changes
+        #[container_index slot_index item_id amount]
+      end
+
+      def swap_slots(container, slot_index, dest_container, dest_slot_index)
+        #slot.item_id, dest_slot.item_id = dest_slot.item_id, slot.item_id
+        changes = []
+        item = container.get_item_by_slot_index(slot_index)
+        dest_item = container.get_item_by_slot_index(dest_slot_index)
+        if item
+          item.slot_index = dest_slot_index
+          item.container_id = dest_container.id
+          item.save!
+          item.reload
+          changes << [item.container.container_type, item.slot_index, item.static_item_id, item.quantity]
+        end
+        if dest_item
+          dest_item.slot_index = slot_index
+          dest_item.container_id = container.id
+          dest_item.save!
+          dest_item.reload
+          changes << [dest_item.container.container_type, dest_item.slot_index, dest_item.static_item_id, dest_item.quantity]
+        end
+
+        #item.static_item_id, dest_item.static_item_id = dest_item.static_item_id, item.static_item_id
+
+        # 返回[[],[]]
+      end
+
+#       # 没做类型检查
+#       def move_item_to_container(container_index, slot_index, dest_container_index, dest_slot_index = nil)
+#         container = player_container(container_index)
+#         dest_container = player_container(dest_container_index)
+#         slot = Slot.find(:first, :conditions => { :container_id => container.id, :slot_index => slot_index })
+#         raise InvalidSlotError unless slot
+#         # TODO 应该触发自动堆叠
+#         dest_slot_index ||= dest_container.free_slot_index
+#         raise ContainerFullError unless dest_slot_index
+#         move_item(container, slot, dest_container, dest_slot_index)
+#       end
+
+#       def move_item(container, item, dest_container, dest_slot_index)
+#         src_slot_index = slot.slot_index
+#         slot.container_id = dest_container.id
+#         slot.slot_index = dest_slot_index
+#         slot.save!
+#         post_account_event Vici::EventType::ITEM, [[container.container_type, src_slot_index, nil, 0]]
+#         post_account_event Vici::EventType::ITEM, [[dest_container.container_type, dest_slot_index, slot.item.static_item_id, slot.item.stack]]
+#       end
+
+     # # 移动可堆叠物品
+     # def move_stacking_item(container, slot, item, dest_container, dest_slot, max_stack)
+     #   #     物品双方修改数量
+     #   amount = item.quantity
+     #   amount = (max_stack - dest_slot.item.stack) if (dest_slot.item.stack + amount) > max_stack
+     #   return if amount == 0
+     #   dest_slot.item.stack += amount
+     #   dest_slot.item.save
+     #   item.stack -= amount
+     #   post_account_event Vici::EventType::ITEM, [[dest_container.container_type, dest_slot.slot_index, item.static_item_id, dest_slot.item.stack]]
+     #   if item.stack != 0
+     #     item.save
+     #     post_account_event Vici::EventType::ITEM, [[container.container_type, slot.slot_index, item.static_item_id, item.stack]]
+     #   else
+     #     #     如果源物品数量为0，删除
+     #     destroy_item_in_container(container, slot.slot_index)
+     #   end
+     # end
+      
+  end
+
+  def add_item(item, dest_slot_index = nil)
+    dest_slot_index ||= free_slot_index
+    
+    item.slot_index = dest_slot_index
+    item.container_id = self.id
+    item.save!
+
+    # 返回[[]]
+  end
+end  

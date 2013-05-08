@@ -1,0 +1,670 @@
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (27.0ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to OldVersion (20110124014258)
+Migrating to AddScoreToPlayerScene (20110414105118)
+  [4;36;1mSQL (41.6ms)[0m   [0;1mALTER TABLE `player_scenes` ADD `score1` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (4.5ms)[0m   [0mALTER TABLE `player_scenes` ADD `score2` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (5.5ms)[0m   [0;1mALTER TABLE `player_scenes` ADD `score3` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (4.7ms)[0m   [0mALTER TABLE `player_scenes` ADD `score4` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110414105118')[0m
+Migrating to CreatePlayerDungeonScore (20110414105135)
+  [4;35;1mSQL (11.0ms)[0m   [0mCREATE TABLE `player_dungeon_scores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) NOT NULL, `dungeon_zone_id` int(11), `score` int(11), `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110414105135')[0m
+Migrating to CreateCrafts (20110415095410)
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE `crafts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `craft_branch_id` int(11), `points` int(11) DEFAULT 0, `rank` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (22.3ms)[0m   [0;1mALTER TABLE `recipes` ADD `craft_branch_id` int(11)[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110415095410')[0m
+Migrating to RemoveCraftFromCharacter (20110419094240)
+  [4;36;1mSQL (6.5ms)[0m   [0;1mALTER TABLE `characters` DROP `craft`[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mALTER TABLE `characters` DROP `craft_rank`[0m
+  [4;36;1mSQL (6.1ms)[0m   [0;1mALTER TABLE `characters` DROP `craft_points`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110419094240')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `accounts`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `accounts`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `action_bars`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `action_bars`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `action_bars`[0m
+  [4;35;1mSQL (21.7ms)[0m   [0mSHOW FIELDS FROM `albums`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `albums`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `albums`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `auras`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `auras`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `auras`[0m
+  [4;35;1mSQL (12.0ms)[0m   [0mSHOW FIELDS FROM `battle_players`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `battle_players`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `battle_players`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `battle_queues`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `battle_queues`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `battle_queues`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `battleground_objectives`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `battleground_objectives`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `battleground_objectives`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mSHOW FIELDS FROM `battlegrounds`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `battlegrounds`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `battlegrounds`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mSHOW FIELDS FROM `buybacks`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `buybacks`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `buybacks`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `characters`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mdescribe `characters`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `characters`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `containers`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `containers`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `containers`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `cooldowns`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `cooldowns`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `cooldowns`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `crafts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `crafts`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `crafts`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `friends`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `friends`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `friends`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `ignores`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `ignores`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `ignores`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `items`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `items`[0m
+  [4;35;1mSQL (8.5ms)[0m   [0mSHOW FIELDS FROM `loot_rolls`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `loot_rolls`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `loot_rolls`[0m
+  [4;36;1mSQL (9.7ms)[0m   [0;1mSHOW FIELDS FROM `loots`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `loots`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `loots`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `mail_attachments`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `mail_attachments`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `mail_attachments`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `mails`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `mails`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `mails`[0m
+  [4;35;1mSQL (14.4ms)[0m   [0mSHOW FIELDS FROM `malls`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `malls`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `malls`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `open_loots`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `open_loots`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `open_loots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `parties`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `parties`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `parties`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `party_invite_requests`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `party_invite_requests`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `party_invite_requests`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mSHOW FIELDS FROM `paths`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `paths`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `paths`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `player_completed_quests`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `player_completed_quests`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW KEYS FROM `player_completed_quests`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `player_dungeon_scores`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `player_dungeon_scores`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `player_dungeon_scores`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `player_quests`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `player_quests`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `player_quests`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `player_scenes`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mdescribe `player_scenes`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `player_scenes`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `recipes`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `recipes`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `recipes`[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mSHOW FIELDS FROM `resurrects`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `resurrects`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `resurrects`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mSHOW FIELDS FROM `scene_npcs`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `scene_npcs`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `scene_npcs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `scene_object_items`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mdescribe `scene_object_items`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `scene_object_items`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `scene_objects`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `scene_objects`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `scene_objects`[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mSHOW FIELDS FROM `scenes`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `scenes`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `scenes`[0m
+  [4;36;1mSQL (10.5ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `slots`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `slots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `spells`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `spells`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW KEYS FROM `spells`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `titles`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `titles`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW KEYS FROM `titles`[0m
+  [4;35;1mSQL (1.3ms)[0m   [0mSHOW FIELDS FROM `trade_items`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `trade_items`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `trade_items`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `trades`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `trades`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `trades`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (5.3ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (4.2ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to OldVersion (20110124014258)
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `accounts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `salt` varchar(255), `created_at` datetime, `last_login` datetime, `role` int(11), `token` varchar(255), `last_access` int(11), `multi_login` tinyint(1), `diamond` int(11) DEFAULT 0 NOT NULL, `mute` tinyint(1), `music_volume` int(11), `sound_volume` int(11), `field_of_vision` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `action_bars` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `slot_index` int(11), `spell_id` int(11), `item_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE TABLE `albums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `card_num` int(11), `gain_time` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCREATE TABLE `auras` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) NOT NULL, `aura_id` int(11) NOT NULL, `elapses_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE TABLE `battle_players` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `battleground_id` int(11) DEFAULT 0 NOT NULL, `battleground_faction` int(11), `kills` int(11) DEFAULT 0 NOT NULL, `deaths` int(11) DEFAULT 0 NOT NULL, `bouns_honor` int(11) DEFAULT 0 NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `battle_queues` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) DEFAULT 0 NOT NULL, `first_avaliable` tinyint(1), `battleground_id` int(11) DEFAULT 0 NOT NULL, `battleground_faction` int(11), `battleground_joined_at` int(11), `elapses_at` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (4.3ms)[0m   [0mCREATE TABLE `battleground_objectives` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `battleground_id` int(11), `objective_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE `battlegrounds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `battle_id` int(11), `red_kills` int(11) DEFAULT 0, `blue_kills` int(11) DEFAULT 0, `created_at` int(11), `closes_at` int(11), `began_at` int(11), `scene_id` int(11), `red_number` int(11) DEFAULT 0, `blue_number` int(11) DEFAULT 0, `max_number` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `buybacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `item_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.9ms)[0m   [0;1mCREATE TABLE `characters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `account_id` int(11), `name` varchar(255), `appearance` int(11), `profession` int(11), `level` int(11), `xp` int(11), `money` int(11), `static_zone_id` int(11), `x` int(11), `y` int(11), `online` int(11), `logout_time` datetime, `health` int(11), `power` int(11), `scene_id` int(11), `unspent_points` int(11), `craft` int(11), `craft_rank` int(11), `craft_points` int(11), `party_id` int(11) DEFAULT 0 NOT NULL, `difficult_level` int(11), `vigor` int(11), `voucher` int(11) DEFAULT 0 NOT NULL, `current_title` int(11), `is_dead` int(11) DEFAULT 0, `dead_at` int(11) DEFAULT 0, `honor` int(11) DEFAULT 0 NOT NULL, `show_newbie_tips` tinyint(1), `block_trades` tinyint(1), `block_party_invites` tinyint(1)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `containers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `container_type` int(11), `max_slot` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE `cooldowns` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) NOT NULL, `cooldown_id` int(11) NOT NULL, `elapses_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (4.4ms)[0m   [0mCREATE TABLE `friends` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) DEFAULT 0 NOT NULL, `note` varchar(255) DEFAULT '', `created_at` datetime, `friend_id` int(11) DEFAULT 0 NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE `ignores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) DEFAULT 0 NOT NULL, `note` varchar(255) DEFAULT '', `created_at` datetime, `ignore_id` int(11) DEFAULT 0 NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.8ms)[0m   [0mCREATE TABLE `items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `container_id` int(11), `slot_index` int(11), `static_item_id` int(11), `durability` int(11), `max_durability` int(11), `expired` datetime, `quantity` int(11), `updated_at` datetime, `strength` int(11), `intellect` int(11), `vitality` int(11), `hit_rating` int(11), `crit_rating` int(11), `dodge_rating` int(11), `min_attack` int(11), `max_attack` int(11), `damage` int(11), `defense` int(11), `spell_min_attack` int(11), `spell_max_attack` int(11), `spell_damage` int(11), `spell_defense` int(11), `max_health` int(11), `health_regeneration` int(11), `max_power` int(11), `power_regeneration` int(11), `attack_speed` int(11), `move_speed` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mCREATE TABLE `loot_rolls` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `loot_id` int(11) DEFAULT 0 NOT NULL, `character_id` int(11) DEFAULT 0 NOT NULL, `option_id` int(11), `number` int(11), `scene_object_id` int(11) DEFAULT 0 NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE TABLE `loots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scene_object_item_id` int(11) DEFAULT 0 NOT NULL, `elapses_at` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCREATE TABLE `mail_attachments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `mail_id` int(11), `item_id` int(11), `quantity` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `mails` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `subject` varchar(255), `content` varchar(255), `money` int(11), `unread` tinyint(1), `created_at` datetime, `sender_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `malls` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tab` int(11), `index` int(11), `static_item_id` int(11), `stack` int(11), `diamond_price` int(11), `voucher_price` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (3.5ms)[0m   [0mCREATE TABLE `open_loots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scene_object_id` int(11), `character_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE `parties` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `leader_id` int(11) DEFAULT 0 NOT NULL, `loot_method` int(11), `loot_threshold` int(11), `number_of_members` int(11), `loot_order` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE `party_invite_requests` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `leader_id` int(11), `target_id` int(11), `elapsed` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCREATE TABLE `paths` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `x` int(11), `y` int(11), `o` int(11), `cost` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `player_completed_quests` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `quest_id` int(11), `created_at` datetime, `updated_at` datetime, `completed_times` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.2ms)[0m   [0;1mCREATE INDEX `index_player_completed_quests_on_character_id` ON `player_completed_quests` (`character_id`)[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCREATE TABLE `player_quests` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) DEFAULT 0 NOT NULL, `quest_id` int(11) DEFAULT 0 NOT NULL, `objective1_progress` int(11) DEFAULT 0, `objective2_progress` int(11) DEFAULT 0, `objective3_progress` int(11) DEFAULT 0, `objective4_progress` int(11) DEFAULT 0) ENGINE=InnoDB[0m
+  [4;36;1mSQL (4.8ms)[0m   [0;1mCREATE INDEX `index_player_quests_on_character_id` ON `player_quests` (`character_id`)[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE `player_scenes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `scene_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE TABLE `recipes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `recipe` varchar(255)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE `resurrects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `elapses_at` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.5ms)[0m   [0;1mCREATE TABLE `scene_npcs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `static_npc_id` int(11) NOT NULL, `scene_id` int(11) NOT NULL, `x` int(11) NOT NULL, `y` int(11) NOT NULL, `is_dead` tinyint(1) NOT NULL, `dead_at` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE TABLE `scene_object_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scene_object_id` int(11) DEFAULT 0 NOT NULL, `static_item_id` int(11) DEFAULT 0 NOT NULL, `quantity` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mCREATE TABLE `scene_objects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scene_id` int(11), `created_at` int(11), `elapses_at` int(11), `x` int(11) NOT NULL, `y` int(11) NOT NULL, `character_id` int(11), `party_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `scenes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `zone_id` int(11) NOT NULL, `player_number` int(11) NOT NULL, `leave_at` datetime, `in_queue` tinyint(1), `difficulty_level` int(11), `open_at` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `slots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `container_id` int(11), `slot_index` int(11), `item_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `spells` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `spell_id` int(11), `rank` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `titles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `title_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `trade_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `trade_id` int(11), `character_id` int(11), `trade_slot_index` int(11), `container_id` int(11), `slot_index` int(11), `static_item_id` int(11), `quantity` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCREATE TABLE `trades` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `state` int(11), `character1_id` int(11), `character1_money` int(11) DEFAULT 0, `character2_id` int(11), `character2_money` int(11) DEFAULT 0) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110124014258')[0m
+Migrating to AddScoreToPlayerScene (20110414105118)
+  [4;36;1mSQL (4.2ms)[0m   [0;1mALTER TABLE `player_scenes` ADD `score1` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (6.0ms)[0m   [0mALTER TABLE `player_scenes` ADD `score2` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (4.6ms)[0m   [0;1mALTER TABLE `player_scenes` ADD `score3` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (5.7ms)[0m   [0mALTER TABLE `player_scenes` ADD `score4` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110414105118')[0m
+Migrating to CreatePlayerDungeonScore (20110414105135)
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `player_dungeon_scores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) NOT NULL, `dungeon_zone_id` int(11), `score` int(11), `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110414105135')[0m
+Migrating to CreateCrafts (20110415095410)
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE `crafts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `craft_branch_id` int(11), `points` int(11) DEFAULT 0, `rank` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (7.5ms)[0m   [0;1mALTER TABLE `recipes` ADD `craft_branch_id` int(11)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110415095410')[0m
+Migrating to RemoveCraftFromCharacter (20110419094240)
+  [4;36;1mSQL (6.1ms)[0m   [0;1mALTER TABLE `characters` DROP `craft`[0m
+  [4;35;1mSQL (6.7ms)[0m   [0mALTER TABLE `characters` DROP `craft_rank`[0m
+  [4;36;1mSQL (7.1ms)[0m   [0;1mALTER TABLE `characters` DROP `craft_points`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110419094240')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mdescribe `accounts`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `accounts`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `action_bars`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `action_bars`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `action_bars`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `albums`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `albums`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `albums`[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mSHOW FIELDS FROM `auras`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `auras`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `auras`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `battle_players`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `battle_players`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `battle_players`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `battle_queues`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `battle_queues`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `battle_queues`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `battleground_objectives`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `battleground_objectives`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `battleground_objectives`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `battlegrounds`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `battlegrounds`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `battlegrounds`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `buybacks`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `buybacks`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `buybacks`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `characters`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `characters`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `characters`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `containers`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `containers`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `containers`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `cooldowns`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `cooldowns`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `cooldowns`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `crafts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `crafts`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `crafts`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `friends`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `friends`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `friends`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `ignores`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `ignores`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `ignores`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mdescribe `items`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `items`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `loot_rolls`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `loot_rolls`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `loot_rolls`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `loots`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `loots`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `loots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `mail_attachments`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `mail_attachments`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `mail_attachments`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `mails`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `mails`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `mails`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `malls`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `malls`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `malls`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `open_loots`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `open_loots`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `open_loots`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `parties`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `parties`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `parties`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `party_invite_requests`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `party_invite_requests`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `party_invite_requests`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `paths`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `paths`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `paths`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `player_completed_quests`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `player_completed_quests`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `player_completed_quests`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `player_dungeon_scores`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `player_dungeon_scores`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `player_dungeon_scores`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `player_quests`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `player_quests`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `player_quests`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `player_scenes`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `player_scenes`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `player_scenes`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `recipes`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `recipes`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `recipes`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `resurrects`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `resurrects`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `resurrects`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `scene_npcs`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `scene_npcs`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `scene_npcs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `scene_object_items`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `scene_object_items`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW KEYS FROM `scene_object_items`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `scene_objects`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `scene_objects`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `scene_objects`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `scenes`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `scenes`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `scenes`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `slots`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `slots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `spells`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `spells`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `spells`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `titles`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `titles`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `titles`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `trade_items`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `trade_items`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `trade_items`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `trades`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `trades`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `trades`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (6.3ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (4.3ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to OldVersion (20110124014258)
+  [4;35;1mSQL (4.8ms)[0m   [0mCREATE TABLE `accounts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `salt` varchar(255), `created_at` datetime, `last_login` datetime, `role` int(11), `token` varchar(255), `last_access` int(11), `multi_login` tinyint(1), `diamond` int(11) DEFAULT 0 NOT NULL, `mute` tinyint(1), `music_volume` int(11), `sound_volume` int(11), `field_of_vision` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `action_bars` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `slot_index` int(11), `spell_id` int(11), `item_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE TABLE `albums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `card_num` int(11), `gain_time` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `auras` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) NOT NULL, `aura_id` int(11) NOT NULL, `elapses_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.3ms)[0m   [0mCREATE TABLE `battle_players` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `battleground_id` int(11) DEFAULT 0 NOT NULL, `battleground_faction` int(11), `kills` int(11) DEFAULT 0 NOT NULL, `deaths` int(11) DEFAULT 0 NOT NULL, `bouns_honor` int(11) DEFAULT 0 NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `battle_queues` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) DEFAULT 0 NOT NULL, `first_avaliable` tinyint(1), `battleground_id` int(11) DEFAULT 0 NOT NULL, `battleground_faction` int(11), `battleground_joined_at` int(11), `elapses_at` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE `battleground_objectives` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `battleground_id` int(11), `objective_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `battlegrounds` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `battle_id` int(11), `red_kills` int(11) DEFAULT 0, `blue_kills` int(11) DEFAULT 0, `created_at` int(11), `closes_at` int(11), `began_at` int(11), `scene_id` int(11), `red_number` int(11) DEFAULT 0, `blue_number` int(11) DEFAULT 0, `max_number` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `buybacks` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `item_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE `characters` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `account_id` int(11), `name` varchar(255), `appearance` int(11), `profession` int(11), `level` int(11), `xp` int(11), `money` int(11), `static_zone_id` int(11), `x` int(11), `y` int(11), `online` int(11), `logout_time` datetime, `health` int(11), `power` int(11), `scene_id` int(11), `unspent_points` int(11), `craft` int(11), `craft_rank` int(11), `craft_points` int(11), `party_id` int(11) DEFAULT 0 NOT NULL, `difficult_level` int(11), `vigor` int(11), `voucher` int(11) DEFAULT 0 NOT NULL, `current_title` int(11), `is_dead` int(11) DEFAULT 0, `dead_at` int(11) DEFAULT 0, `honor` int(11) DEFAULT 0 NOT NULL, `show_newbie_tips` tinyint(1), `block_trades` tinyint(1), `block_party_invites` tinyint(1)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE TABLE `containers` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `container_type` int(11), `max_slot` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `cooldowns` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) NOT NULL, `cooldown_id` int(11) NOT NULL, `elapses_at` datetime NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `friends` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) DEFAULT 0 NOT NULL, `note` varchar(255) DEFAULT '', `created_at` datetime, `friend_id` int(11) DEFAULT 0 NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mCREATE TABLE `ignores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) DEFAULT 0 NOT NULL, `note` varchar(255) DEFAULT '', `created_at` datetime, `ignore_id` int(11) DEFAULT 0 NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.9ms)[0m   [0mCREATE TABLE `items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `container_id` int(11), `slot_index` int(11), `static_item_id` int(11), `durability` int(11), `max_durability` int(11), `expired` datetime, `quantity` int(11), `updated_at` datetime, `strength` int(11), `intellect` int(11), `vitality` int(11), `hit_rating` int(11), `crit_rating` int(11), `dodge_rating` int(11), `min_attack` int(11), `max_attack` int(11), `damage` int(11), `defense` int(11), `spell_min_attack` int(11), `spell_max_attack` int(11), `spell_damage` int(11), `spell_defense` int(11), `max_health` int(11), `health_regeneration` int(11), `max_power` int(11), `power_regeneration` int(11), `attack_speed` int(11), `move_speed` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `loot_rolls` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `loot_id` int(11) DEFAULT 0 NOT NULL, `character_id` int(11) DEFAULT 0 NOT NULL, `option_id` int(11), `number` int(11), `scene_object_id` int(11) DEFAULT 0 NOT NULL) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE `loots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scene_object_item_id` int(11) DEFAULT 0 NOT NULL, `elapses_at` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCREATE TABLE `mail_attachments` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `mail_id` int(11), `item_id` int(11), `quantity` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `mails` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `subject` varchar(255), `content` varchar(255), `money` int(11), `unread` tinyint(1), `created_at` datetime, `sender_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.4ms)[0m   [0;1mCREATE TABLE `malls` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `tab` int(11), `index` int(11), `static_item_id` int(11), `stack` int(11), `diamond_price` int(11), `voucher_price` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `open_loots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scene_object_id` int(11), `character_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `parties` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `leader_id` int(11) DEFAULT 0 NOT NULL, `loot_method` int(11), `loot_threshold` int(11), `number_of_members` int(11), `loot_order` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.5ms)[0m   [0mCREATE TABLE `party_invite_requests` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `leader_id` int(11), `target_id` int(11), `elapsed` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE TABLE `paths` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `x` int(11), `y` int(11), `o` int(11), `cost` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.4ms)[0m   [0mCREATE TABLE `player_completed_quests` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `quest_id` int(11), `created_at` datetime, `updated_at` datetime, `completed_times` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (7.2ms)[0m   [0;1mCREATE INDEX `index_player_completed_quests_on_character_id` ON `player_completed_quests` (`character_id`)[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `player_quests` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) DEFAULT 0 NOT NULL, `quest_id` int(11) DEFAULT 0 NOT NULL, `objective1_progress` int(11) DEFAULT 0, `objective2_progress` int(11) DEFAULT 0, `objective3_progress` int(11) DEFAULT 0, `objective4_progress` int(11) DEFAULT 0) ENGINE=InnoDB[0m
+  [4;36;1mSQL (4.7ms)[0m   [0;1mCREATE INDEX `index_player_quests_on_character_id` ON `player_quests` (`character_id`)[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mCREATE TABLE `player_scenes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `scene_id` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `recipes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `recipe` varchar(255)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.1ms)[0m   [0mCREATE TABLE `resurrects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `elapses_at` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `scene_npcs` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `static_npc_id` int(11) NOT NULL, `scene_id` int(11) NOT NULL, `x` int(11) NOT NULL, `y` int(11) NOT NULL, `is_dead` tinyint(1) NOT NULL, `dead_at` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE `scene_object_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scene_object_id` int(11) DEFAULT 0 NOT NULL, `static_item_id` int(11) DEFAULT 0 NOT NULL, `quantity` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mCREATE TABLE `scene_objects` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `scene_id` int(11), `created_at` int(11), `elapses_at` int(11), `x` int(11) NOT NULL, `y` int(11) NOT NULL, `character_id` int(11), `party_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.2ms)[0m   [0mCREATE TABLE `scenes` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `zone_id` int(11) NOT NULL, `player_number` int(11) NOT NULL, `leave_at` datetime, `in_queue` tinyint(1), `difficulty_level` int(11), `open_at` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.1ms)[0m   [0;1mCREATE TABLE `slots` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `container_id` int(11), `slot_index` int(11), `item_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mCREATE TABLE `spells` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `spell_id` int(11), `rank` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mCREATE TABLE `titles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `title_id` int(11)) ENGINE=InnoDB[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mCREATE TABLE `trade_items` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `trade_id` int(11), `character_id` int(11), `trade_slot_index` int(11), `container_id` int(11), `slot_index` int(11), `static_item_id` int(11), `quantity` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.9ms)[0m   [0;1mCREATE TABLE `trades` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `state` int(11), `character1_id` int(11), `character1_money` int(11) DEFAULT 0, `character2_id` int(11), `character2_money` int(11) DEFAULT 0) ENGINE=InnoDB[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110124014258')[0m
+Migrating to AddScoreToPlayerScene (20110414105118)
+  [4;36;1mSQL (7.9ms)[0m   [0;1mALTER TABLE `player_scenes` ADD `score1` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (7.1ms)[0m   [0mALTER TABLE `player_scenes` ADD `score2` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (6.5ms)[0m   [0;1mALTER TABLE `player_scenes` ADD `score3` int(11) DEFAULT 0[0m
+  [4;35;1mSQL (18.3ms)[0m   [0mALTER TABLE `player_scenes` ADD `score4` int(11) DEFAULT 0[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110414105118')[0m
+Migrating to CreatePlayerDungeonScore (20110414105135)
+  [4;35;1mSQL (5.3ms)[0m   [0mCREATE TABLE `player_dungeon_scores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11) NOT NULL, `dungeon_zone_id` int(11), `score` int(11), `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110414105135')[0m
+Migrating to CreateCrafts (20110415095410)
+  [4;35;1mSQL (5.6ms)[0m   [0mCREATE TABLE `crafts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `character_id` int(11), `craft_branch_id` int(11), `points` int(11) DEFAULT 0, `rank` int(11)) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.5ms)[0m   [0;1mALTER TABLE `recipes` ADD `craft_branch_id` int(11)[0m
+  [4;35;1mSQL (3.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110415095410')[0m
+Migrating to RemoveCraftFromCharacter (20110419094240)
+  [4;36;1mSQL (9.5ms)[0m   [0;1mALTER TABLE `characters` DROP `craft`[0m
+  [4;35;1mSQL (143.2ms)[0m   [0mALTER TABLE `characters` DROP `craft_rank`[0m
+  [4;36;1mSQL (6.7ms)[0m   [0;1mALTER TABLE `characters` DROP `craft_points`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110419094240')[0m
+Migrating to AddUserIdToAccount (20110506041102)
+  [4;36;1mSQL (52.5ms)[0m   [0;1mALTER TABLE `accounts` ADD `user_id` varchar(255) NOT NULL[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110506041102')[0m
+Migrating to AddInTradeToItems (20110506070510)
+  [4;36;1mSQL (6.3ms)[0m   [0;1mALTER TABLE `items` ADD `in_trade` tinyint(1) DEFAULT 0 NOT NULL[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110506070510')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mSHOW FIELDS FROM `accounts`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `accounts`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `accounts`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `action_bars`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `action_bars`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `action_bars`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `albums`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `albums`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `albums`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `auras`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `auras`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `auras`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `battle_players`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `battle_players`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `battle_players`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `battle_queues`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `battle_queues`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `battle_queues`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `battleground_objectives`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `battleground_objectives`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `battleground_objectives`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `battlegrounds`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `battlegrounds`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `battlegrounds`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `buybacks`[0m
+  [4;36;1mSQL (1.7ms)[0m   [0;1mdescribe `buybacks`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `buybacks`[0m
+  [4;36;1mSQL (2.0ms)[0m   [0;1mSHOW FIELDS FROM `characters`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `characters`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `characters`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `containers`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mdescribe `containers`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `containers`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `cooldowns`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `cooldowns`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `cooldowns`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `crafts`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `crafts`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `crafts`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `friends`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `friends`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `friends`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `ignores`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `ignores`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `ignores`[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mSHOW FIELDS FROM `items`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `items`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `items`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `loot_rolls`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `loot_rolls`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `loot_rolls`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `loots`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `loots`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `loots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `mail_attachments`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `mail_attachments`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `mail_attachments`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `mails`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `mails`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `mails`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `malls`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `malls`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `malls`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `open_loots`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `open_loots`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `open_loots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `parties`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `parties`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `parties`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `party_invite_requests`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `party_invite_requests`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `party_invite_requests`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `paths`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `paths`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `paths`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `player_completed_quests`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `player_completed_quests`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `player_completed_quests`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `player_dungeon_scores`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `player_dungeon_scores`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `player_dungeon_scores`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `player_quests`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `player_quests`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `player_quests`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `player_scenes`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `player_scenes`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `player_scenes`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `recipes`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `recipes`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `recipes`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `resurrects`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `resurrects`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `resurrects`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `scene_npcs`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `scene_npcs`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `scene_npcs`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `scene_object_items`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `scene_object_items`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `scene_object_items`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `scene_objects`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `scene_objects`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `scene_objects`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `scenes`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `scenes`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `scenes`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `slots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `slots`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `slots`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `spells`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `spells`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `spells`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `titles`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `titles`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `titles`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `trade_items`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `trade_items`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `trade_items`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `trades`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `trades`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `trades`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (20.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to OldVersion (20110124014258)
+Migrating to AddScoreToPlayerScene (20110414105118)
+Migrating to CreatePlayerDungeonScore (20110414105135)
+Migrating to CreateCrafts (20110415095410)
+Migrating to RemoveCraftFromCharacter (20110419094240)
+Migrating to AddUserIdToAccount (20110506041102)
+Migrating to AddInTradeToItems (20110506070510)
+Migrating to AddLockedToItems (20110511062743)
+  [4;36;1mSQL (12.0ms)[0m   [0;1mALTER TABLE `items` ADD `locked` tinyint(1) DEFAULT 0 NOT NULL[0m
+  [4;35;1mSQL (8.8ms)[0m   [0mALTER TABLE `items` DROP `in_trade`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20110511062743')[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `accounts`[0m
+  [4;35;1mSQL (2.6ms)[0m   [0mdescribe `accounts`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `accounts`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `action_bars`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `action_bars`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `action_bars`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `albums`[0m
+  [4;35;1mSQL (1.9ms)[0m   [0mdescribe `albums`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `albums`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `auras`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `auras`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `auras`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `battle_players`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `battle_players`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `battle_players`[0m
+  [4;35;1mSQL (6.1ms)[0m   [0mSHOW FIELDS FROM `battle_queues`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `battle_queues`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `battle_queues`[0m
+  [4;36;1mSQL (2.7ms)[0m   [0;1mSHOW FIELDS FROM `battleground_objectives`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `battleground_objectives`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `battleground_objectives`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `battlegrounds`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mdescribe `battlegrounds`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `battlegrounds`[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mSHOW FIELDS FROM `buybacks`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mdescribe `buybacks`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `buybacks`[0m
+  [4;35;1mSQL (2.0ms)[0m   [0mSHOW FIELDS FROM `characters`[0m
+  [4;36;1mSQL (4.6ms)[0m   [0;1mdescribe `characters`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW KEYS FROM `characters`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `containers`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `containers`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `containers`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `cooldowns`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `cooldowns`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `cooldowns`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `crafts`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `crafts`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `crafts`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mSHOW FIELDS FROM `friends`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `friends`[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW KEYS FROM `friends`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `ignores`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `ignores`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `ignores`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `items`[0m
+  [4;36;1mSQL (2.2ms)[0m   [0;1mdescribe `items`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `items`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mSHOW FIELDS FROM `loot_rolls`[0m
+  [4;35;1mSQL (1.4ms)[0m   [0mdescribe `loot_rolls`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW KEYS FROM `loot_rolls`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `loots`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `loots`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW KEYS FROM `loots`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `mail_attachments`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `mail_attachments`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW KEYS FROM `mail_attachments`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `mails`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `mails`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `mails`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mSHOW FIELDS FROM `malls`[0m
+  [4;35;1mSQL (1.6ms)[0m   [0mdescribe `malls`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW KEYS FROM `malls`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `open_loots`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `open_loots`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `open_loots`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `parties`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `parties`[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW KEYS FROM `parties`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `party_invite_requests`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `party_invite_requests`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `party_invite_requests`[0m
+  [4;36;1mSQL (1.8ms)[0m   [0;1mSHOW FIELDS FROM `paths`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `paths`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `paths`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `player_completed_quests`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `player_completed_quests`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `player_completed_quests`[0m
+  [4;36;1mSQL (3.2ms)[0m   [0;1mSHOW FIELDS FROM `player_dungeon_scores`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `player_dungeon_scores`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `player_dungeon_scores`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `player_quests`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `player_quests`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `player_quests`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `player_scenes`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mdescribe `player_scenes`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `player_scenes`[0m
+  [4;35;1mSQL (1.0ms)[0m   [0mSHOW FIELDS FROM `recipes`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `recipes`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `recipes`[0m
+  [4;36;1mSQL (3.0ms)[0m   [0;1mSHOW FIELDS FROM `resurrects`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mdescribe `resurrects`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `resurrects`[0m
+  [4;35;1mSQL (1.5ms)[0m   [0mSHOW FIELDS FROM `scene_npcs`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `scene_npcs`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `scene_npcs`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `scene_object_items`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `scene_object_items`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `scene_object_items`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `scene_objects`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mdescribe `scene_objects`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW KEYS FROM `scene_objects`[0m
+  [4;36;1mSQL (1.5ms)[0m   [0;1mSHOW FIELDS FROM `scenes`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mdescribe `scenes`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `scenes`[0m
+  [4;35;1mSQL (1.7ms)[0m   [0mSHOW FIELDS FROM `slots`[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mdescribe `slots`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `slots`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `spells`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `spells`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW KEYS FROM `spells`[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mSHOW FIELDS FROM `titles`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `titles`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW KEYS FROM `titles`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mSHOW FIELDS FROM `trade_items`[0m
+  [4;35;1mSQL (1.1ms)[0m   [0mdescribe `trade_items`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `trade_items`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `trades`[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mdescribe `trades`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW KEYS FROM `trades`[0m

@@ -1,0 +1,59 @@
+require 'rubygems'
+require 'ruby-debug'
+require 'spec/rake/spectask'
+
+require File.expand_path(File.dirname(__FILE__) + '/../conf/conf') # NND,必须先加载这个配置文件
+
+require File.expand_path(File.dirname(__FILE__) + '/../common/core_ext' )
+require File.expand_path(File.dirname(__FILE__) + '/../conf/game_conf' )
+require File.expand_path(File.dirname(__FILE__) + '/../common/static_data' )
+require File.expand_path(File.dirname(__FILE__) + "/model.rb")
+require File.expand_path(File.dirname(__FILE__) + "/spec/prepare_helper.rb")
+
+class Faker
+  extend PrepareHelper
+end
+
+def truncate_table(table_name)
+  ActiveRecord::Base.connection.execute("TRUNCATE #{table_name}")
+end
+
+
+desc "reset mall data"
+task :mall_default do 
+  truncate_table("malls")
+  1.upto(32) do |i| 
+    Mall.create :tab => Vici::MallTab::PROMOTION, :index => i,:static_item_id => 80, :stack => i, :diamond_price => i, :voucher_price => i
+    Mall.create :tab => Vici::MallTab::WEAPON, :index => i ,:static_item_id => 80, :stack => i, :diamond_price => i, :voucher_price => i
+    Mall.create :tab => Vici::MallTab::ARMOR,:index =>  i ,:static_item_id => 80, :stack => i, :diamond_price => i, :voucher_price => i
+    Mall.create :tab => Vici::MallTab::CONSUMABLE, :index => i ,:static_item_id => 80, :stack => i, :diamond_price => i, :voucher_price => i
+    Mall.create :tab => Vici::MallTab::MISC, :index => i ,:static_item_id => 80, :stack => i, :diamond_price => i, :voucher_price => i
+  end 
+end
+
+desc "清空用户和账户信息"
+task :clear do
+  truncate_table("accounts") 
+  truncate_table("characters") 
+  truncate_table("player_quests") 
+  truncate_table("containers") 
+  truncate_table("items") 
+  truncate_table("action_bars")
+end
+
+desc "添加一个用户"
+task :add_user do
+  Faker.prepare_character2
+end
+
+desc "console"
+task :console do 
+  debugger
+  puts "console finished"
+end
+
+desc "Run all examples with RCov"
+Spec::Rake::SpecTask.new('rcov_spec') do |t|
+  t.spec_files = FileList['spec/*.rb']
+  t.rcov = true
+end
